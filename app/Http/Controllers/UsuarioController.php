@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
@@ -13,7 +14,11 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        dd('cheguei no index');
+        $usuarios = User::paginate(15);
+
+        return view('usuarios.index', [
+            'usuarios' => $usuarios
+        ]);
     }
 
     /**
