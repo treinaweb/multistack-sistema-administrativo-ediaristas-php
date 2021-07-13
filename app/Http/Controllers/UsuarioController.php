@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UsuarioRequest;
 
 class UsuarioController extends Controller
 {
@@ -28,7 +30,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        dd('cheguei no create');
+        return view('usuarios.create');
     }
 
     /**
@@ -37,9 +39,16 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsuarioRequest $request)
     {
-        //
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('usuarios.index')
+                         ->with('mensagem', 'Usuário criado com sucesso!');
     }
 
     /**
