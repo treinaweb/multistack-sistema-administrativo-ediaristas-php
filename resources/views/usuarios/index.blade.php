@@ -7,17 +7,14 @@
 @stop
 
 @section('content')
-    @if (session('mensagem'))
-        <div class="alert alert-success">
-            {{ session('mensagem') }}
-        </div>
-    @endif
+    @include('_mensagens_sessao')
 
     <table class="table">
         <thead>
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
+                <th scope="col">Email</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>
@@ -26,6 +23,8 @@
                 <tr>
                     <th>{{ $usuario->id }}</th>
                     <td>{{ $usuario->name }}</td>
+                    <td>{{ $usuario->email }}</td>
+
                     <td>
                         <a href="{{ route('usuarios.edit', $usuario) }}" class="btn btn-primary">Atualizar</a>
                         <form action="{{ route('usuarios.destroy', $usuario) }}" method="post" style="display: inline">
