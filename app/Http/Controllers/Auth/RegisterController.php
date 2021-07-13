@@ -64,10 +64,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        return abort(403);
+    }
+
+    /**
+     * mostra a página de registro
+     *
+     * @return void
+     */
+    public function showRegistrationForm()
+    {
+        return abort(403);
     }
 }
