@@ -59,7 +59,7 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        //
+        dd('show');
     }
 
     /**
@@ -106,6 +106,11 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = User::findOrFail($id);
+
+        $usuario->delete();
+
+        return redirect()->route('usuarios.index')
+                         ->with('mensagem', 'Usuário apagado com sucesso!');
     }
 }
