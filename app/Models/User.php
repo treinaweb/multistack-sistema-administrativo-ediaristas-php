@@ -12,6 +12,13 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+     * Define o nome da tabela para o model
+     *
+     * @var string
+     */
+    protected $table = 'users_admin';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
