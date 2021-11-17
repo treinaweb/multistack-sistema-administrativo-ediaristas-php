@@ -13,6 +13,7 @@
         <thead>
             <tr>
                 <th scope="col">ID</th>
+                <th scope="col">Status</th>
                 <th scope="col">Nome Cliente</th>
                 <th scope="col">Nome Diarista</th>
                 <th scope="col">Data Atendimento</th>
@@ -23,6 +24,31 @@
             @forelse ($diarias as $diaria)
                 <tr>
                     <th>{{ $diaria->id }}</th>
+                    <th>
+                        @switch($diaria->status)
+                            @case(1)
+                                    Aguardando Pagamento
+                                @break
+                            @case(2)
+                                    Paga
+                                @break
+                            @case(3)
+                                    Diarista Selecionado
+                                @break
+                            @case(4)
+                                    Presença confirmada
+                                @break
+                            @case(5)
+                                    Cancelada
+                                @break
+                            @case(6)
+                                    Avaliada
+                                @break
+                            @case(7)
+                                    Transferido para diarista
+                                @break                                                                                                                                                                
+                        @endswitch
+                    </th>
                     <td>{{ $diaria->cliente->nome_completo }}</td>
                     <td>{{ $diaria->diarista->nome_completo ?? '' }}</td>
                     <td>{{ $diaria->data_atendimento }}</td>
