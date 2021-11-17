@@ -51,7 +51,7 @@
                     </th>
                     <td>{{ $diaria->cliente->nome_completo }}</td>
                     <td>{{ $diaria->diarista->nome_completo ?? '' }}</td>
-                    <td>{{ $diaria->data_atendimento }}</td>
+                    <td>{{ \Carbon\Carbon::parse($diaria->data_atendimento)->format('d/m/Y h:i') }}</td>
                     <td>
                         <a href="" class="btn btn-primary">Marcar como pago</a>
                     </td>

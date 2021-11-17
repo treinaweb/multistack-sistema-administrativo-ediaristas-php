@@ -240,7 +240,7 @@ return [
                     'route'  => 'servicos.create',
                     'icon'    => 'fas fa-fw fa-file',
                 ],
-                
+
             ],
         ],
         [
@@ -257,9 +257,14 @@ return [
                     'route'  => 'usuarios.create',
                     'icon'    => 'fas fa-fw fa-file',
                 ],
-                
+
             ],
         ],
+        [
+            'text'  => 'Lista de diárias',
+            'icon'  => 'fas fa-fw fa-clipboard-list',
+            'route' => 'diarias.index'
+        ]
     ],
 
     /*
