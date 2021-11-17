@@ -14,6 +14,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nome Cliente</th>
+                <th scope="col">Nome Diarista</th>
                 <th scope="col">Data Atendimento</th>
                 <th scope="col">Ações</th>
             </tr>
@@ -22,7 +23,8 @@
             @forelse ($diarias as $diaria)
                 <tr>
                     <th>{{ $diaria->id }}</th>
-                    <td>nome cliente</td>
+                    <td>{{ $diaria->cliente->nome_completo }}</td>
+                    <td>{{ $diaria->diarista->nome_completo ?? '' }}</td>
                     <td>{{ $diaria->data_atendimento }}</td>
                     <td>
                         <a href="" class="btn btn-primary">Marcar como pago</a>
