@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ListarDiarias;
 use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,7 @@ Route::get('/', [LoginController::class, 'showLoginForm']);
 
 Auth::routes();
 
-Route::middleware('auth')->group(function() {
+Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::resource('usuarios', UsuarioController::class);
@@ -31,5 +32,6 @@ Route::middleware('auth')->group(function() {
     Route::post('/servicos', [ServicoController::class, 'store'])->name('servicos.store');
     Route::get('/servicos/{servico}/edit', [ServicoController::class, 'edit'])->name('servicos.edit');
     Route::put('/servicos/{servico}', [ServicoController::class, 'update'])->name('servicos.update');
-});
 
+    Route::get('/diarias', ListarDiarias::class)->name('diarias.index');
+});
