@@ -4,6 +4,21 @@
 
 @section('content_header')
     <h1>Lista de Diárias</h1>
+
+    <br>
+    <div class="btn-toolbar">
+      <div class="btn-group mr-2">
+        <a href="?status=1,2,3">
+            <button class="btn btn-default">Pendetes</button>
+        </a>
+        <a href="?status=5">
+            <button class="btn btn-default">Canceladas</button>
+        </a>
+        <a href="?status=4,6,7">
+            <button class="btn btn-default">Concluídas</button>
+        </a>
+      </div>
+    </div>
 @stop
 
 @section('content')
@@ -73,6 +88,6 @@
     </table>
 
     <div class="d-flex justify-content-center">
-        {{ $diarias->links() }}
+        {{ $diarias->appends(request()->query())->links() }}
     </div>
 @stop

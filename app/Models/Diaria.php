@@ -38,8 +38,13 @@ class Diaria extends Model
      * @param integer $quantidadePaginas
      * @return LengthAwarePaginator
      */
-    static public function todasPaginadas(int $quantidadePaginas = 15): LengthAwarePaginator
+    static public function todasPaginadas(string $status, int $quantidadePaginas = 15): LengthAwarePaginator
     {
-        return self::with(['cliente', 'diarista'])->paginate($quantidadePaginas);
+        return self::with(['cliente', 'diarista'])
+            ->when($status, function ($q) use ($status) {
+                $q->whereIn('status', explode(',', $status));
+            })
+            ->orderBy('id')
+            ->paginate($quantidadePaginas);
     }
 }
