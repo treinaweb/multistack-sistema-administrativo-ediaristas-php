@@ -8,15 +8,23 @@
     <br>
     <div class="btn-toolbar">
       <div class="btn-group mr-2">
-        <a href="?status=1,2,3">
+        <a href="?status=1,2,3&nome={{ request()->query('nome') }}">
             <button class="btn btn-default">Pendetes</button>
         </a>
-        <a href="?status=5">
+        <a href="?status=5&nome={{ request()->query('nome') }}">
             <button class="btn btn-default">Canceladas</button>
         </a>
-        <a href="?status=4,6,7">
+        <a href="?status=4,6,7&nome={{ request()->query('nome') }}">
             <button class="btn btn-default">Concluídas</button>
         </a>
+      </div>
+
+      <div>
+        <form method="GET" >
+            <input type="hidden" name="status" value="{{ request()->query('status') }}">
+            <input type="text" value="{{ request('nome') }}" class="btn btn-default" name="nome" placeholder="Buscar por Cliente"  />
+            <input type="submit" class="btn btn-default" value="Filtrar">
+        </form>
       </div>
     </div>
 @stop

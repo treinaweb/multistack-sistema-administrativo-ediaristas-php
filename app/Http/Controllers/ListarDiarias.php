@@ -15,8 +15,9 @@ class ListarDiarias extends Controller
      */
     public function __invoke(Request $request)
     {
-        $diarias = Diaria::todasPaginadas(
-            $request->status ?? ''
+        $diarias = Diaria::filtradasPorStatusENome(
+            $request->status ?? '',
+            $request->nome ?? ''
         );
 
         return view('diarias.index', [
