@@ -9,13 +9,13 @@
     <div class="btn-toolbar">
       <div class="btn-group mr-2">
         <a href="?status=1,2,3&nome={{ request()->query('nome') }}">
-            <button class="btn btn-default">Pendetes</button>
+            <button class="btn {{ request('status') == '1,2,3' ? 'btn-primary' : 'btn-default' }}">Pendetes</button>
         </a>
         <a href="?status=5&nome={{ request()->query('nome') }}">
-            <button class="btn btn-default">Canceladas</button>
+            <button class="btn {{ request('status') == '5' ? 'btn-primary' : 'btn-default' }}">Canceladas</button>
         </a>
         <a href="?status=4,6,7&nome={{ request()->query('nome') }}">
-            <button class="btn btn-default">Concluídas</button>
+            <button class="btn {{ request('status') == '4,6,7' ? 'btn-primary' : 'btn-default' }}">Concluídas</button>
         </a>
       </div>
 
