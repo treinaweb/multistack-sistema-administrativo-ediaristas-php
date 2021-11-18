@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Diaria;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 
 class ListarDiarias extends Controller
 {
     /**
-     * Handle the incoming request.
+     * Lista as diárias com filtros
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return View
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): View
     {
         $diarias = Diaria::filtradasPorStatusENome(
             $request->status ?? '',

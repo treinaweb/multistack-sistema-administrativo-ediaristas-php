@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Diaria extends Model
 {
@@ -35,6 +35,8 @@ class Diaria extends Model
      * Retorna todas as diárias páginadas
      * com as relações cliente e diarista
      *
+     * @param string $status
+     * @param string $nome
      * @param integer $quantidadePaginas
      * @return LengthAwarePaginator
      */

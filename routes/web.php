@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\ListarDiarias;
 use App\Http\Controllers\PagarDiaria;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ListarDiarias;
 use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\UsuarioController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
