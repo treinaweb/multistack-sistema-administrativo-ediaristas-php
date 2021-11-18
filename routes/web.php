@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ListarDiarias;
+use App\Http\Controllers\PagarDiaria;
 use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,5 @@ Route::middleware('auth')->group(function () {
     Route::put('/servicos/{servico}', [ServicoController::class, 'update'])->name('servicos.update');
 
     Route::get('/diarias', ListarDiarias::class)->name('diarias.index');
+    Route::get('/diarias/{diaria}/pagar', PagarDiaria::class)->name('diarias.pagar');
 });

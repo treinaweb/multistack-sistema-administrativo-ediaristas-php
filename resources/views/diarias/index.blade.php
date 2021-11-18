@@ -17,7 +17,7 @@
                 <th scope="col">Nome Cliente</th>
                 <th scope="col">Nome Diarista</th>
                 <th scope="col">Data Atendimento</th>
-                <th scope="col">Ações</th>
+                <th scope="col">Pagamento Diarista</th>
             </tr>
         </thead>
         <tbody>
@@ -53,7 +53,13 @@
                     <td>{{ $diaria->diarista->nome_completo ?? '' }}</td>
                     <td>{{ \Carbon\Carbon::parse($diaria->data_atendimento)->format('d/m/Y h:i') }}</td>
                     <td>
-                        <a href="" class="btn btn-primary">Marcar como pago</a>
+                        @if (in_array($diaria->status, [4, 6]))
+                            <a href="{{ route('diarias.pagar', $diaria) }}" class="btn btn-primary">Marcar como pago</a>
+                        @elseif ($diaria->status == 7)
+                            <a class="btn btn-success disabled">Pago</a>
+                        @else 
+                            <a class="btn btn-danger disabled">Indisponível</a>
+                        @endif   
                     </td>
                 </tr>
             @empty
